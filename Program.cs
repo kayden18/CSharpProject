@@ -4,9 +4,13 @@ namespace ConsoleApplication
 {
     public class Program
     {
+        public static PowerUps Health;
+        public static PowerUps Ammo;
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Health.RunPowerUp();
+            Ammo.RunPowerUp();
+            //Console.WriteLine(myString);
         }
     }
 }
