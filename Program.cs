@@ -7,5 +7,6 @@ public class Program
         Console.WriteLine("Please type in your name:");
         myGame.name = Console.ReadLine();
         Console.WriteLine("Your Player name is " + myGame.name);
+        myGame.Start();
     }
 }
