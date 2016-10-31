@@ -23,6 +23,9 @@ public class LevelBase
 
             case 2:
                 Console.WriteLine("You've walked into " + objects[i]);
+                 Random randomNum = new Random();
+                 Game.GameTimer();
+                Game.UnderWater.Encounter(randomNum.Next(0, Game.UnderWater.objects.Length));
                 break;
 
             case 3:
