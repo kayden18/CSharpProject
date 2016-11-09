@@ -26,27 +26,33 @@ public class Game
         Console.WriteLine("You Died");
         Console.WriteLine("Game Over");
     }
-    public string gameState;
+    
 
     private void Play()
     {
-        Console.WriteLine("Play commands: play, end, help");
-        gameState = Console.ReadLine();
-        if (gameState == "end")
-        {
-            Console.WriteLine("Game Over");
-            Environment.Exit(0);
+        Console.WriteLine("Play commands: Play, End, Help");
+        //gameState = Console.ReadLine();
+        switch (GameStateMachine.currentGamestate){
+            
+            case GameStateMachine.GameStates.End:
+                Console.WriteLine("Game Over");
+                Environment.Exit(0);
+                break;
+            
+            case GameStateMachine.GameStates.Help:
+                Console.WriteLine("What do you need help for? If you can't play this game, you have issues.");
+                Play();
+            break;
+           
+            case GameStateMachine.GameStates.Play:
+            break;
+           
+            default:
+                Console.WriteLine(" is not a valid option.");
+                Play();
+            break;
         }
-        if (gameState == "help")
-        {
-            Console.WriteLine("What do you need help for? If you can't play this game, you have issues.");
-            Play();
-        }
-        if (gameState != "help" || gameState != "play" || gameState != "end")
-            Play();
-        {
-            Console.WriteLine(gameState + " is not a valid option.");
-        }
+
         Random randomNum = new Random();
         Cave.Encounter(randomNum.Next(0, Cave.objects.Length));
     }
